@@ -9,6 +9,7 @@ import PageNotFound from './layouts/PageNotFound'
 import AdminRouteMiddleware from './middleware/AdminRouteMiddleware'
 import Dashboard from './components/admin/Dashboard'
 import LoginComponent from './components/auth/LoginComponent'
+import RegisterComponent from './components/auth/RegisterComponent'
 
 export default function RouterComponent() {
     return (
@@ -24,6 +25,7 @@ export default function RouterComponent() {
                 </Route>
                 <Route path='*' element={<PageNotFound />} />
                 <Route path='/login' element={<LoginComponent />} />
+                <Route path='/register' element={<RegisterComponent />} />
             </Routes>
         </div>
     )

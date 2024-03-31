@@ -15,6 +15,10 @@ export default function LoginComponent() {
         resolver: yupResolver(loginSchema)
     });
 
+    const login = (data) => {
+        console.log(data);
+    }
+
     return (
         <div>
             <HeaderComponent />
@@ -24,14 +28,20 @@ export default function LoginComponent() {
                         <h1>Login Page</h1>
                     </div>
                     <div className='col-md-12'>
-                        <form>
+                        <form onSubmit={handleSubmit(login)}>
                             <div className="form-group mb-2">
-                                <label htmlFor="">Email</label>
-                                <input type="email" className='form-control' name='email' />
+                                <label htmlFor="">Email
+                                    <a className='text-danger'>
+                                        {errors.email?.message && <span>{errors.email?.message}</span>}
+                                    </a></label>
+                                <input type="email" className='form-control' name='email' {...register('email')} />
                             </div>
                             <div className="form-group mb-2">
-                                <label htmlFor="">Password</label>
-                                <input type="password" className='form-control' name='password' />
+                                <label htmlFor="">Password
+                                    <a className='text-danger'>
+                                        {errors.password?.message && <span>{errors.password?.message}</span>}
+                                    </a></label>
+                                <input type="password" className='form-control' name='password' {...register('password')} />
                             </div>
                             <div className="form-group">
                                 <button className='btn btn-success'>Login</button>
